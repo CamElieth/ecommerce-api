@@ -1,19 +1,20 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import { Brands } from './entities/brand.entity';
+import { BrandsService } from './brands.service';
 import { ParseUUIDPipe } from '@nestjs/common';
-
 
 @Controller('brands')
 export class BrandsController {
-  constructor(private readonly brandsService: BrandsService) {}
+  constructor(private readonly brandsService: BrandsService) { }
+
 
   @Post()
   async create(@Body() createBrandDtoenu: CreateBrandDto): Promise<Brands> {
     return this.brandsService.create(createBrandDtoenu);
   }
+  
 
   @Get()
   findAll() {
